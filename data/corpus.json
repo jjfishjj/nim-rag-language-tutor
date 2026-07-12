@@ -1,0 +1,12 @@
+[
+  {"topic": "英文現在完成式", "text": "現在完成式 (have/has + p.p.) 表達「過去發生、與現在有關」的事件。常見信號詞：already, yet, just, ever, never, since, for。例：I have lived in Taipei for ten years.（我住在台北十年了，現在還住著）。與過去簡單式的差別：過去式只陳述過去事實，完成式強調對現在的影響。"},
+  {"topic": "英文假設語氣", "text": "與現在事實相反的假設用 If + 過去式, would + 原形：If I were you, I would take the job. 與過去事實相反用 If + had p.p., would have p.p.：If I had studied, I would have passed. 注意 be 動詞在正式假設語氣中一律用 were。"},
+  {"topic": "日文て形", "text": "て形是日文動詞最重要的變化之一，用於連接動作（食べて寝る）、請求（見てください）、進行式（食べている）、許可（食べてもいい）。五段動詞變化規則：う/つ/る→って、ぬ/ぶ/む→んで、く→いて、ぐ→いで、す→して。"},
+  {"topic": "日文助詞は與が", "text": "「は」標記主題（已知資訊），「が」標記主語（新資訊或強調）。例：象は鼻が長い（大象【主題】鼻子【主語】長）。疑問詞當主語時只能用が：誰が来ましたか。回答新資訊時也用が：田中さんが来ました。"},
+  {"topic": "英文冠詞用法", "text": "a/an 用於首次提及的可數單數名詞；the 用於雙方都知道的特定事物、獨一無二的事物（the sun）、序數與最高級前（the first, the best）。不可數名詞與複數泛指不加冠詞：Water is important. Dogs are loyal."},
+  {"topic": "西班牙文動詞變位基礎", "text": "西班牙文規則動詞分三類：-ar (hablar)、-er (comer)、-ir (vivir)。現在式變位以 -ar 為例：hablo, hablas, habla, hablamos, habláis, hablan。主詞代名詞通常省略，因為動詞字尾已標明人稱。"},
+  {"topic": "語言學習方法：間隔重複", "text": "間隔重複 (Spaced Repetition) 是記憶單字最有效的方法之一：在即將遺忘的時間點複習，間隔逐次拉長（1天→3天→7天→14天）。搭配主動回想 (active recall) 效果最佳——先嘗試回想再看答案，而不是反覆閱讀。"},
+  {"topic": "英文關係子句", "text": "關係代名詞 who（人）、which（物）、that（人/物）引導形容詞子句修飾先行詞。限定用法不加逗號：The book that I bought is great. 非限定用法加逗號且不可用 that：My father, who is 60, still works. 關代當受詞時可省略：The book (that) I bought."},
+  {"topic": "日文敬語基礎", "text": "日文敬語分三類：尊敬語（抬高對方：いらっしゃる、召し上がる）、謙讓語（貶低自己：伺う、いただく）、丁寧語（禮貌形：です/ます）。商務場合對外提及自己公司的人要用謙讓語，即使是自己的上司。"},
+  {"topic": "英文分詞構句", "text": "分詞構句以現在分詞（主動）或過去分詞（被動）開頭，省略連接詞與重複主詞：Walking down the street, I met an old friend.（= While I was walking...）注意懸垂分詞錯誤：分詞的邏輯主詞必須與主句主詞一致。"}
+]
