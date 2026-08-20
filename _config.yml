@@ -1,0 +1,10 @@
+theme: jekyll-theme-cayman
+title: nim rag language tutor
+description: >-
+  RAG language tutor on NVIDIA NIM APIs (NV-EmbedQA + Nemotron) — grounded grammar answers with practice exercises
+exclude:
+  - venv
+  - node_modules
+  - "*.py"
+  - "*.usda"
+  - requirements.txt
