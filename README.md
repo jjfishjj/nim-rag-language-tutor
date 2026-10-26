@@ -1,6 +1,27 @@
+---
+title: NIM RAG Language Tutor
+emoji: 🗣️
+colorFrom: green
+colorTo: gray
+sdk: gradio
+app_file: app.py
+pinned: false
+license: mit
+short_description: Live NVIDIA NIM RAG with evidence, latency, tokens and cost contract
+tags:
+  - nvidia
+  - nim
+  - rag
+  - nemotron
+  - embeddings
+  - education
+---
+
 # LinguaRAG — RAG Language Tutor on NVIDIA NIM
 
 以 **NVIDIA NIM API** 打造的檢索增強（RAG）語言學習助手。使用者提問文法問題，系統從文法筆記庫中檢索最相關的內容，交給 Nemotron 模型生成有依據、附練習題的回答。
+
+**Live Hugging Face Space:** <https://huggingface.co/spaces/junbin666/nim-rag-language-tutor>
 
 *A retrieval-augmented language tutor: grammar questions are answered by Nemotron, grounded on notes retrieved via NV-EmbedQA embeddings — all served through NVIDIA NIM endpoints.*
 
@@ -17,11 +38,11 @@
 
 ```mermaid
 flowchart LR
-    Q[使用者問題] --> E["NV-EmbedQA-E5-v5(NIM Embedding API)"]
+    Q[使用者問題] --> E["Nemotron 3.5 Embed 1B(NIM Embedding API)"]
     E --> R["Cosine Top-K 檢索(NumPy in-memory index)"]
     C[(文法筆記庫corpus.json)] -->|離線建索引| R
     R --> P[Prompt 組裝：筆記 + 問題]
-    P --> L["Nemotron-70B-Instruct(NIM Chat API)"]
+    P --> L["Nemotron 3 Super 120B(NIM Chat API)"]
     L --> A[有依據的回答 + 練習題]
 ```
 
@@ -41,6 +62,31 @@ python src/rag_tutor.py "日文的は和が怎麼分？"
 
 輸出會先顯示檢索到的筆記與相似度分數，再給出 grounded 回答。
 
+預設模型可用環境變數替換：
+
+```bash
+export NIM_EMBED_MODEL=nvidia/nemotron-3.5-embed-1b
+export NIM_CHAT_MODEL=nvidia/nemotron-3-super-120b-a12b
+```
+
+舊版 `nv-embedqa-e5-v5` 與 `llama-3.1-nemotron-70b-instruct` hosted
+endpoint 已被 NVIDIA 標示 deprecated，因此 v2 預設值已遷移。模型可用性仍可能改變，部署時請以 NVIDIA API Catalog 為準。
+
+## Hugging Face backend deployment
+
+`app.py` 提供 Gradio server-side UI。將 repository 發布成 Gradio Space，並在
+**Settings → Variables and secrets** 新增 `NVIDIA_API_KEY`。金鑰不會出現在
+browser bundle、Git history 或 UI output。
+
+若尚未設定 secret，Space 會保留 deterministic offline demo，並清楚顯示
+`OFFLINE DEMO`。設定後會切換為 `LIVE NIM`，回傳：
+
+- retrieval / generation / total latency
+- input / output token usage
+- embedding 與 chat model ID
+- 可選的成本估算；只有設定 `NIM_INPUT_USD_PER_MTOK` 與
+  `NIM_OUTPUT_USD_PER_MTOK` 時才計算，避免硬編過時價格
+
 ## Design Notes（PM 視角）
 
 - **Grounding 優先**：system prompt 要求模型只依據檢索筆記回答、覆蓋不到時誠實說明 — 語言學習產品最怕自信的錯誤文法。
@@ -49,7 +95,7 @@ python src/rag_tutor.py "日文的は和が怎麼分？"
 
 ## Stack
 
-Python · NVIDIA NIM (nv-embedqa-e5-v5, llama-3.1-nemotron-70b-instruct) · NumPy · OpenAI SDK
+Python · Gradio · NVIDIA NIM (Nemotron 3.5 Embed, Nemotron 3 Super) · NumPy · OpenAI SDK
 
 ## Related
 
