@@ -87,6 +87,21 @@ browser bundle、Git history 或 UI output。
 - 可選的成本估算；只有設定 `NIM_INPUT_USD_PER_MTOK` 與
   `NIM_OUTPUT_USD_PER_MTOK` 時才計算，避免硬編過時價格
 
+### Vercel fallback backend
+
+當 Hugging Face Space 沒有 CPU quota 時，可將 `backend/` 作為獨立 FastAPI
+專案部署到 Vercel：
+
+```bash
+vercel --cwd backend
+```
+
+在 Vercel project secrets 設定 `NVIDIA_API_KEY` 與
+`NIM_LIVE_ENABLED=1`。公開端點具有 allow-origin、500 字輸入上限、每個 IP
+每分鐘 5 次的 best-effort rate limit，以及 450 output-token 上限。真正的流量
+與預算防護仍應在 NVIDIA／Vercel 帳號層設定 quota；不要把 API key 放進靜態
+Space 或 Git。
+
 ## Design Notes（PM 視角）
 
 - **Grounding 優先**：system prompt 要求模型只依據檢索筆記回答、覆蓋不到時誠實說明 — 語言學習產品最怕自信的錯誤文法。
