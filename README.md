@@ -42,7 +42,7 @@ flowchart LR
     E --> R["Cosine Top-K 檢索(NumPy in-memory index)"]
     C[(文法筆記庫corpus.json)] -->|離線建索引| R
     R --> P[Prompt 組裝：筆記 + 問題]
-    P --> L["Nemotron 3 Super 120B(NIM Chat API)"]
+    P --> L["Nemotron 3.5 Lightning 30B A3B(NIM Chat API)"]
     L --> A[有依據的回答 + 練習題]
 ```
 
@@ -66,11 +66,14 @@ python src/rag_tutor.py "日文的は和が怎麼分？"
 
 ```bash
 export NIM_EMBED_MODEL=nvidia/nemotron-3.5-embed-1b
-export NIM_CHAT_MODEL=nvidia/nemotron-3-super-120b-a12b
+export NIM_CHAT_MODEL=nvidia/nemotron-3.5-lightning-30b-a3b
 ```
 
-舊版 `nv-embedqa-e5-v5` 與 `llama-3.1-nemotron-70b-instruct` hosted
-endpoint 已被 NVIDIA 標示 deprecated，因此 v2 預設值已遷移。模型可用性仍可能改變，部署時請以 NVIDIA API Catalog 為準。
+舊版 `nv-embedqa-e5-v5`、`llama-3.1-nemotron-70b-instruct` 與
+`nemotron-3-super-120b-a12b` hosted endpoint 已被 NVIDIA 標示 deprecated，
+因此預設值已遷移至 2026-10-27 Catalog 顯示仍提供 Free Endpoint 的
+`nemotron-3.5-embed-1b` 與 `nemotron-3.5-lightning-30b-a3b`。模型可用性仍可能
+改變，部署時請以 NVIDIA API Catalog 為準。
 
 ## Hugging Face backend deployment
 
@@ -110,7 +113,7 @@ Space 或 Git。
 
 ## Stack
 
-Python · Gradio · NVIDIA NIM (Nemotron 3.5 Embed, Nemotron 3 Super) · NumPy · OpenAI SDK
+Python · Gradio · NVIDIA NIM (Nemotron 3.5 Embed, Nemotron 3.5 Lightning) · NumPy · OpenAI SDK
 
 ## Related
 

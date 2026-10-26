@@ -18,7 +18,7 @@ from openai import OpenAI
 
 BASE_URL = "https://integrate.api.nvidia.com/v1"
 EMBED_MODEL = os.environ.get("NIM_EMBED_MODEL", "nvidia/nemotron-3.5-embed-1b")
-CHAT_MODEL = os.environ.get("NIM_CHAT_MODEL", "nvidia/nemotron-3-super-120b-a12b")
+CHAT_MODEL = os.environ.get("NIM_CHAT_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b")
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 INDEX_PATH = DATA_DIR / "index.npz"
 
@@ -90,6 +90,7 @@ def answer_with_metrics(client: OpenAI, query: str) -> dict:
         ],
         temperature=0.2,
         max_tokens=800,
+        extra_body={"chat_template_kwargs": {"enable_thinking": False}, "reasoning_budget": 0},
     )
     generation_ms = (time.perf_counter() - generation_started) * 1000
     usage = getattr(resp, "usage", None)

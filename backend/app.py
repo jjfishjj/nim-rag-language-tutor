@@ -18,7 +18,7 @@ from pydantic import BaseModel, Field
 
 BASE_URL = "https://integrate.api.nvidia.com/v1"
 EMBED_MODEL = os.environ.get("NIM_EMBED_MODEL", "nvidia/nemotron-3.5-embed-1b")
-CHAT_MODEL = os.environ.get("NIM_CHAT_MODEL", "nvidia/nemotron-3-super-120b-a12b")
+CHAT_MODEL = os.environ.get("NIM_CHAT_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b")
 ALLOWED_ORIGINS = [
     item.strip()
     for item in os.environ.get(
@@ -147,6 +147,7 @@ def tutor(payload: TutorRequest, request: Request) -> dict:
             ],
             temperature=0.2,
             max_tokens=450,
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}, "reasoning_budget": 0},
         )
         generation_ms = (time.perf_counter() - generation_started) * 1000
     except HTTPException:
