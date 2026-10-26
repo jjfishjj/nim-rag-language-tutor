@@ -7,7 +7,7 @@ sdk: gradio
 app_file: app.py
 pinned: false
 license: mit
-short_description: Live NVIDIA NIM RAG with evidence, latency, tokens and cost contract
+short_description: Live NVIDIA NIM RAG with evidence and metrics
 tags:
   - nvidia
   - nim
